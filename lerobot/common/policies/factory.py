@@ -25,6 +25,7 @@ from lerobot.common.envs.configs import EnvConfig
 from lerobot.common.envs.utils import env_to_policy_features
 from lerobot.common.policies.act.configuration_act import ACTConfig
 from lerobot.common.policies.diffusion.configuration_diffusion import DiffusionConfig
+from lerobot.common.policies.idp3.configuration_idp3 import IDP3Config
 from lerobot.common.policies.pi0.configuration_pi0 import PI0Config
 from lerobot.common.policies.pretrained import PreTrainedPolicy
 from lerobot.common.policies.tdmpc.configuration_tdmpc import TDMPCConfig
@@ -55,6 +56,10 @@ def get_policy_class(name: str) -> PreTrainedPolicy:
         from lerobot.common.policies.pi0.modeling_pi0 import PI0Policy
 
         return PI0Policy
+    elif name == "idp3":
+        from lerobot.common.policies.idp3.modeling_idp3 import IDP3Policy
+
+        return IDP3Policy
     else:
         raise NotImplementedError(f"Policy with name {name} is not implemented.")
 
@@ -70,6 +75,8 @@ def make_policy_config(policy_type: str, **kwargs) -> PreTrainedConfig:
         return VQBeTConfig(**kwargs)
     elif policy_type == "pi0":
         return PI0Config(**kwargs)
+    elif policy_type == "idp3":
+        return IDP3Config(**kwargs)
     else:
         raise ValueError(f"Policy type '{policy_type}' is not available.")
 
