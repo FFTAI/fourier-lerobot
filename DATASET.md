@@ -1,5 +1,5 @@
 # Fourier ActionNet Dataset
-## What's coming next
+
 
 ## Download the dataset
 First, you can easily download the dataset online, which will be in a .tar file. After downloading, use the following command to extract all files:
@@ -23,18 +23,24 @@ After untar, the dataset will be in the following structure
 │       ├── rgb.mp4
 │       └── timestamps.json
 ├── 01JH00FRJ5YISEASEL.hdf5
+├── Metadata.json # metadata of the task, including prompt and all episodes id of the task
 ...
 ```
+### Data Introduction
+The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. While each folder also contains a **metadata.json** file, which contains all episodes id, and the prompt of the task.
 
+## Data preparation
 Since our training pipeline relies on the LeRobotDatasetV2 format, you can use the following command to easily convert your dataset to the LeRobotDatasetV2 format. We would be delighted if our dataset could help accelerate the exciting era of humanoids.
 
 ```bash
 python scripts/convert_to_lerobot_v2.py --raw-dir DATASET_PATH --repo-id FourierIntelligence/ActionNet
 ```
 
-## Dataset structure
-The dataset consists of both robot-side and camera-side data. The robot-side data is stored in an HDF5 file for each episode. Below is the structure of the data stored in the HDF5 file for one episode. For more detailed information, please refer to the [Data Explanation](#data-explanation).
+### Data Structure
+The robot-side data is stored in an HDF5 file for each episode. Below is the structure of the data stored in the HDF5 file for one episode. For more detailed information, please refer to the [Data Explanation](#data-explanation).
 
+
+#### HDF5 file structure
  ```txt
 01JH00FCRH6EIBDXTA.hdf5
 ├── action # Robot action data
@@ -46,20 +52,31 @@ The dataset consists of both robot-side and camera-side data. The robot-side dat
 │   ├── pose [27,x]
 │   └── robot [32 or 29] 
 ├── timestamp # Timestamp for both state and action
-└── attributes # HDF5 attributes (metadata)
+└── attributes # HDF5 attributes
+```
+
+#### Metadata.json
+```txt
+Metadata.json
+{
+    "prompt": "How can you make a humanoid walk?",
+    "episodes": [
+        "01JH00FCRH6EIBDXTA",
+        "01JH00FRJ5YISEASEL",
+        ...
+    ]
+}
 ```
 
 ### Data Explanation
-The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. Here's a breakdown of the datasets:
-
-**Robot side data:** The robot-side data is organized into three main categories: **robot state**, **robot action**, and **timestamp**. Each of these categories contains specific types of data related to the robot’s operation. Notably, both the **robot state** and **robot action** data are stored using similar classes. Below are the classes and their details:
+#### Robot-side data(hdf5)
+The robot-side data is organized into three main categories: **robot state**, **robot action**, and **timestamp**. Each of these categories contains specific types of data related to the robot’s operation. Notably, both the **robot state** and **robot action** data are stored using similar classes. Below are the classes and their details:
 
 - **Hand Data:** The data contains either (12, x) or (24, x) entries. For the Fourier hand with 6 DOF, it consists of 12 data points (6 for the left hand and 6 for the right hand). For the 12 DOF hand, it consists of 24 data points (12 for each hand).
 - **Pose Data:** The data has dimensions (27, x). This includes position and gesture data for the end-link of both arms and the head. In our dataset, the gesture data is represented as a 3x3 rotation matrix, and the position data is represented as a 3-dimensional vector. The **first two columns of the rotational matrix** represent gesture data, while the **position vector** represents position data. Therefore, each end link (left arm, right arm, head) has 9 data points.
 - **Robot Data**: This data contains the joint position information of the robot. For the **GR1-T1** and **GR1-T2** robots, there are 32 data points. For the **GR2** robot, there are 29 data points, covering all joint positions of the robot.
 
-
-**Camera side data:**
+#### Camera-side data(rgb & depth)
 Data from the camera side is stored in the folder corresponding to each episode. The data is stored in the following format:
 - **rgb.mp4:** This file contains the RGB video encoded in H264 format.
 - **depth.mkv:** This file contains the depth video encoded in Z16 format.
