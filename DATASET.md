@@ -56,16 +56,16 @@ The data collected from two primary sources: the **robot side** and the **camera
 
 The robot-side data is organized into three main categories: **robot state**, **robot action**, and **timestamp**. Each of these categories contains specific types of data related to the robot’s operation. Notably, both the **robot state** and **robot action** data are stored using similar classes. Below are the classes and their details:
 
-- Hand Data: The data contains either (12, x) or (24, x) entries. For the Fourier hand with 6 DOF, it consists of 12 data points (6 for the left hand and 6 for the right hand). For the 12 DOF hand, it consists of 24 data points (12 for each hand).
-- Pose Data: The data has dimensions (27, x). This includes position and gesture data for the end-link of both arms and the head. In our dataset, the gesture data is represented as a 3x3 rotation matrix, and the position data is represented as a 3-dimensional vector. The **first two columns of the rotational matrix** represent gesture data, while the **position vector** represents position data. Therefore, each end link (left arm, right arm, head) has 9 data points.
-- Robot Data: This data contains the joint position information of the robot. For the **GR1-T1** and **GR1-T2** robots, there are 32 data points. For the **GR2** robot, there are 29 data points, covering all joint positions of the robot.
+- **Hand Data:** The data contains either (12, x) or (24, x) entries. For the Fourier hand with 6 DOF, it consists of 12 data points (6 for the left hand and 6 for the right hand). For the 12 DOF hand, it consists of 24 data points (12 for each hand).
+- **Pose Data:** The data has dimensions (27, x). This includes position and gesture data for the end-link of both arms and the head. In our dataset, the gesture data is represented as a 3x3 rotation matrix, and the position data is represented as a 3-dimensional vector. The **first two columns of the rotational matrix** represent gesture data, while the **position vector** represents position data. Therefore, each end link (left arm, right arm, head) has 9 data points.
+- **Robot Data**: This data contains the joint position information of the robot. For the **GR1-T1** and **GR1-T2** robots, there are 32 data points. For the **GR2** robot, there are 29 data points, covering all joint positions of the robot.
 
 
 **Camera side data:**
 Data from the camera side is stored in the folder corresponding to each episode. The data is stored in the following format:
-- rgb.mp4: This file contains the RGB video encoded in H264 format.
-- depth.mkv: This file contains the depth video encoded in Z16 format.
-- timestamps.json: This JSON file contains timestamps for each frame in the videos, providing synchronization between the camera and robot data.
+- **rgb.mp4:** This file contains the RGB video encoded in H264 format.
+- **depth.mkv:** This file contains the depth video encoded in Z16 format.
+- **timestamps.json:** This JSON file contains timestamps for each frame in the videos, providing synchronization between the camera and robot data.
 
 > Note: The timestamps in the timestamps.json file are in microseconds, and all state and action data has already been aligned based on these timestamps.
 
