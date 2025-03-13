@@ -52,9 +52,7 @@ The dataset consists of both robot-side and camera-side data. The robot-side dat
 ### Data Explanation
 The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. Here's a breakdown of the datasets:
 
-**Robot side data:**
-
-The robot-side data is organized into three main categories: **robot state**, **robot action**, and **timestamp**. Each of these categories contains specific types of data related to the robot’s operation. Notably, both the **robot state** and **robot action** data are stored using similar classes. Below are the classes and their details:
+**Robot side data:** The robot-side data is organized into three main categories: **robot state**, **robot action**, and **timestamp**. Each of these categories contains specific types of data related to the robot’s operation. Notably, both the **robot state** and **robot action** data are stored using similar classes. Below are the classes and their details:
 
 - **Hand Data:** The data contains either (12, x) or (24, x) entries. For the Fourier hand with 6 DOF, it consists of 12 data points (6 for the left hand and 6 for the right hand). For the 12 DOF hand, it consists of 24 data points (12 for each hand).
 - **Pose Data:** The data has dimensions (27, x). This includes position and gesture data for the end-link of both arms and the head. In our dataset, the gesture data is represented as a 3x3 rotation matrix, and the position data is represented as a 3-dimensional vector. The **first two columns of the rotational matrix** represent gesture data, while the **position vector** represents position data. Therefore, each end link (left arm, right arm, head) has 9 data points.
