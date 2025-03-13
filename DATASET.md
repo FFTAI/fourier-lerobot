@@ -38,13 +38,13 @@ The dataset consists of both robot-side and camera-side data. The robot-side dat
  ```txt
 01JH00FCRH6EIBDXTA.hdf5
 ├── action # Robot action data
-│   ├── hand # Dexhand data with Fourier hand
-│   ├── pose # End link data
-│   └── robot # All joint data in humanoids.
+│   ├── hand [12,x] or [24,x] # Dexhand data with Fourier hand
+│   ├── pose [27,x] # End link data
+│   └── robot [32 or 29] # All joint data in humanoids.
 ├── state # Robot state data
-│   ├── hand
-│   ├── pose
-│   └── robot 
+│   ├── hand [12,x] or [24,x]
+│   ├── pose [27,x]
+│   └── robot [32 or 29] 
 ├── timestamp # Timestamp for both state and action
 └── attributes # HDF5 attributes (metadata)
 ```
