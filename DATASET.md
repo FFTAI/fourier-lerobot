@@ -65,6 +65,6 @@ Data from the camera side is stored in the folder corresponding to each episode.
 - **depth.mkv:** This file contains the depth video encoded in Z16 format.
 - **timestamps.json:** This JSON file contains timestamps for each frame in the videos, providing synchronization between the camera and robot data.
 
-> Note: The timestamps in the timestamps.json file are in microseconds, and all state and action data has already been aligned based on these timestamps.
+> Note: All state and action data has already been aligned based on the timestamps in a same hdf5, so they are sharing one timestamp array.
 
 
