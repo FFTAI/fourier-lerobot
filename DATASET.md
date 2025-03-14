@@ -1,7 +1,8 @@
 # Fourier ActionNet Dataset
 
 ## Data Introduction
-The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. While each folder also contains a **metadata.json** file, which contains all episodes id, and the prompt of the task.
+The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. While there is also a **metadata.json** file in the dataset, which contains all episodes id, and it's prompt.
+
 ## Download the dataset
 First, you can easily download the dataset online, which will be in a .tar file. After downloading, use the following command to extract all files:
 
@@ -29,7 +30,17 @@ After untar, the dataset will be in the following structure
 ```
 
 ## Data Viewer
-We provide a simple data viewer to visualize the data. You can use the following command to launch the viewer with help message:
+We provide a simple data viewer to visualize the data. 
+First, you need to install the dependencies, there are two ways to do it:
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+# Install with optional dependencies in the main package
+pip install -e .[fourier_viz]
+```
+
+With the dependencies installed, you can launch the data viewer. You can use the following command to launch the viewer:
 
 ```bash
 # Usage with help message:
@@ -71,12 +82,11 @@ The robot-side data is stored in an HDF5 file for each episode. Below is the str
 ```txt
 Metadata.json
 {
-    "prompt": "Pick the lemon and put it in the box.",
-    "episodes": [
-        "01JH00FCRH6EIBDXTA",
-        "01JH00FRJ5YISEASEL",
-        ...
-    ]
+    {
+        "id": "01JH00FCRH6EIBDXTA",
+        "prompt": "Pick the lemon and put it in the box.",
+    }
+    ...
 }
 ```
 

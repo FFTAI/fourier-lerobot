@@ -76,6 +76,15 @@ test = ["pytest>=8.1.0", "pytest-cov>=5.0.0", "pyserial>=3.5"]
 umi = ["imagecodecs>=2024.1.1"]
 video_benchmark = ["scikit-image>=0.23.2", "pandas>=2.2.2"]
 xarm = ["gym-xarm>=0.1.1 ; python_version < '4.0'"]
+fourier_viz = [
+    "opencv-python>=4.10.0.84",
+    "rerun-sdk==0.22.0",
+    "h5py>=3.12.1",
+    "tqdm>=4.67.1",
+    "loguru",
+    "numpy",
+    "rich",
+]
 
 [tool.poetry]
 requires-poetry = ">=2.1"

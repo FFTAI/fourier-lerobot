@@ -1,0 +1,8 @@
+opencv-python>=4.10.0.84
+rerun-sdk==0.22.0
+h5py>=3.12.1
+tqdm>=4.67.1
+scipy
+loguru
+numpy
+rich
