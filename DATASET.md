@@ -1,5 +1,7 @@
 # Fourier ActionNet Dataset
 
+### Data Introduction
+The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. While each folder also contains a **metadata.json** file, which contains all episodes id, and the prompt of the task.
 ## Download the dataset
 First, you can easily download the dataset online, which will be in a .tar file. After downloading, use the following command to extract all files:
 
@@ -25,8 +27,6 @@ After untar, the dataset will be in the following structure
 ├── Metadata.json # metadata of the task, including prompt and all episodes id of the task
 ...
 ```
-### Data Introduction
-The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. While each folder also contains a **metadata.json** file, which contains all episodes id, and the prompt of the task.
 
 ## Data Viewer
 We provide a simple data viewer to visualize the data. You can use the following command to launch the viewer with help message:
