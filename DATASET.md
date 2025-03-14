@@ -80,7 +80,7 @@ The robot-side data is stored in an HDF5 file for each episode. Below is the str
 
 #### Metadata.json
 ```txt
-Metadata.json
+metadata.json
 {
     {
         "id": "01JH00FCRH6EIBDXTA",
@@ -104,6 +104,6 @@ Data from the camera side is stored in the folder corresponding to each episode.
 - **depth.mkv:** This file contains the depth video encoded in Z16 format.
 - **timestamps.json:** This JSON file contains timestamps for each frame in the videos, providing synchronization between the camera and robot data.
 
-> Note: All state and action data has already been aligned based on the timestamps in a same hdf5, so they are sharing one timestamp array.
+> Note: In original dataset, all state and action data has already been aligned based on the timestamps in a same hdf5, so they are sharing one timestamp array. For the camera-side, we will make it aign with robot-side data after running the conversion script.
 
 
