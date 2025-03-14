@@ -36,6 +36,20 @@
 
 <br/>
 
+
+<h3 align="center">
+    <p>Fourier-Lerobot: A training pipeline with Fourier dataset</p>
+</h3>
+
+<content >
+
+Based on the impressive LeRobot framework, we have added a training pipeline incorporating DP, ACT, and IDP3. Additionally, to support the development of humanoids, we have uploaded the Fourier dataset. For more details about the Fourier ActionNet dataset, please refer to the [dataset page](/DATASET.md). A script will also be provided to convert the dataset into the LeRobotDatasetV2 format.
+</content>
+
+---
+
+
+
 <h3 align="center">
     <p>LeRobot: State-of-the-art AI for real-world robotics</p>
 </h3>
