@@ -1,6 +1,5 @@
 # Fourier ActionNet Dataset
 
-
 ## Download the dataset
 First, you can easily download the dataset online, which will be in a .tar file. After downloading, use the following command to extract all files:
 
@@ -29,12 +28,25 @@ After untar, the dataset will be in the following structure
 ### Data Introduction
 The data collected from two primary sources: the **robot side** and the **camera side**. The HDF5 file contains the robot-side data, while the camera-side data is stored in the corresponding episode folder. While each folder also contains a **metadata.json** file, which contains all episodes id, and the prompt of the task.
 
-## Data preparation
+## Data Viewer
+We provide a simple data viewer to visualize the data. You can use the following command to launch the viewer with help message:
+
+```bash
+# Usage with help message:
+python scripts/fourier_viz.py -h
+
+# Example usage:
+python scripts/fourier_viz.py -d DATASET_PATH -e 01JH00FCRH6EIBDXTA
+```
+
+
+## Data Preparation
 Since our training pipeline relies on the LeRobotDatasetV2 format, you can use the following command to easily convert your dataset to the LeRobotDatasetV2 format. We would be delighted if our dataset could help accelerate the exciting era of humanoids.
 
 ```bash
 python scripts/convert_to_lerobot_v2.py --raw-dir DATASET_PATH --repo-id FourierIntelligence/ActionNet
 ```
+
 
 ### Data Structure
 The robot-side data is stored in an HDF5 file for each episode. Below is the structure of the data stored in the HDF5 file for one episode. For more detailed information, please refer to the [Data Explanation](#data-explanation).
@@ -59,7 +71,7 @@ The robot-side data is stored in an HDF5 file for each episode. Below is the str
 ```txt
 Metadata.json
 {
-    "prompt": "How can you make a humanoid walk?",
+    "prompt": "Pick the lemon and put it in the box.",
     "episodes": [
         "01JH00FCRH6EIBDXTA",
         "01JH00FRJ5YISEASEL",
